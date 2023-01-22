@@ -6,6 +6,7 @@
 #include <Protocol/SimpleFileSystem.h>
 #include <Protocol/DiskIo2.h>
 #include <Protocol/BlockIo.h>
+#include <Guid/FileInfo.h>
 
 struct MemoryMap {
   UINTN buffer_size;
@@ -118,16 +119,13 @@ EFI_STATUS EFIAPI UefiMain(
     EFI_SYSTEM_TABLE *system_table) {
   Print(L"Hello, Mikan World!!\n");
 
-  CHAR8 memmap_buf[4096 * 8];
+  CHAR8 memmap_buf[4096 * 4];
   struct MemoryMap memmap = {sizeof(memmap_buf), memmap_buf, 0, 0, 0, 0};
   GetMemoryMap(&memmap);
   Print(L"GetMemoryMap done\n");
 
   EFI_FILE_PROTOCOL* root_dir;
-  EFI_STATUS status = OpenRootDir(image_handle, &root_dir);
-  if (EFI_ERROR(status)) {
-    Print(L"OpenRootDir fail\n");
-  }
+  OpenRootDir(image_handle, &root_dir);
   Print(L"OpenRootDir done\n");
 
   EFI_FILE_PROTOCOL* memmap_file;
@@ -138,6 +136,54 @@ EFI_STATUS EFIAPI UefiMain(
 
   SaveMemoryMap(&memmap, memmap_file);
   memmap_file->Close(memmap_file);
+
+  // Read Kernel begin
+  EFI_FILE_PROTOCOL* kernel_file;
+  root_dir->Open(
+    root_dir, &kernel_file, L"kernel.elf", EFI_FILE_MODE_READ, 0
+  );
+
+  UINTN file_info_size = sizeof(EFI_FILE_INFO) + sizeof(CHAR16) * 12;
+  UINT8 file_info_buffer[file_info_size];
+  kernel_file->GetInfo(kernel_file, &gEfiFileInfoGuid, &file_info_size, file_info_buffer);
+
+  EFI_FILE_INFO* file_info = (EFI_FILE_INFO*)file_info_buffer;
+  UINTN kernel_file_size = file_info->FileSize;
+
+  EFI_PHYSICAL_ADDRESS kernel_base_addr = 0x100000;
+  gBS->AllocatePages(
+    AllocateAddress, EfiLoaderData, (kernel_file_size + 0xfff) / 0x1000, &kernel_base_addr
+  );
+  kernel_file->Read(kernel_file, &kernel_file_size, (VOID*)kernel_base_addr);
+  Print(L"Kernel: 0x%0lx (%lu bytes)\n", kernel_base_addr, kernel_file_size);
+  // Read Kernel end
+
+
+  // Exit Boot Service begin
+  EFI_STATUS status;
+  status = gBS->ExitBootServices(image_handle, memmap.map_key);
+  if (EFI_ERROR(status)) {
+    status = GetMemoryMap(&memmap);
+    if (EFI_ERROR(status)) {
+      Print(L"failed to get memory map: %r\n", status);
+      while(1);
+    }
+    status = gBS->ExitBootServices(image_handle, memmap.map_key);
+    if (EFI_ERROR(status)) {
+      Print(L"Could not exit boot service: %r\n", status);
+      while(1);
+    }
+  }
+  // Exit Boot Service end
+
+  // Call Kernel begin
+  UINT64 entry_addr = *(UINT64*)(kernel_base_addr + 24);
+
+  typedef void EntryPointType(void);
+  EntryPointType* entry_point = (EntryPointType*)entry_addr;
+  entry_point();
+  // Call Kernel end
+
 
   Print(L"All done\n");
 
