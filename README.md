@@ -31,3 +31,7 @@
 - たぶんこの節からUbuntuドックに`MIKAN OS`が出現した（気づかなかっただけ？）
   - どうやらloopにマウントされている。`run_qemu.sh`などを見ると、そこでマウントされていることがわかった
   - ループバック（マウント）というやつで、別に気にしなくてもよさそう
+#### day03d
+- `Halt`関数を実装
+- [ここ](https://uefi.org/specs/UEFI/2.10/13_Protocols_Media_Access.html#simple-file-system-protocol)に定義が書いてある
+  - ながめてみるといいかも
