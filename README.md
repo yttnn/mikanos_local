@@ -24,3 +24,4 @@
 - boot service終了時の`GetMemoryMap`で`Buffer Size Too Small`で止まる
   - `GetMemoryMap`に若干加筆されてるのに気づかず...
 - うごいた!!
+- レッドゾーンよくワカンネ（そのうち戻ってくる）
