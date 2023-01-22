@@ -2,7 +2,7 @@
 ## めも
 ### day02
 #### day02a
-- インテリセンスまわりを整備`@c_cpp_properties.json`
+- インテリセンスまわりを整備`c_cpp_properties.json`
 #### day02b
 - `Main.c`を書いていく
   - `root_dir`を`root->dir`を見間違えた
@@ -16,3 +16,11 @@
       - オリジナルのmikanosでは普通に動く
       - `gBS->OpenProtocol`に渡す引数を間違えてた...
 - memmapもいい感じ
+### day03
+#### day03a
+- `Loader.inf`に追記が必要なので注意
+- おぼえがき
+  - `kernel_base_addr`：kernelをコンパイル（リンク）するときに指定したベースアドレス
+- boot service終了時の`GetMemoryMap`で`Buffer Size Too Small`で止まる
+  - `GetMemoryMap`に若干加筆されてるのに気づかず...
+- うごいた!!

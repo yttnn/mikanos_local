@@ -22,6 +22,7 @@ EFI_STATUS GetMemoryMap(struct MemoryMap* map) {
     return EFI_BUFFER_TOO_SMALL;
   }
 
+  map->map_size = map->buffer_size;
   return gBS->GetMemoryMap(
     &map->map_size,
     (EFI_MEMORY_DESCRIPTOR*)map->buffer,
@@ -140,7 +141,7 @@ EFI_STATUS EFIAPI UefiMain(
   // Read Kernel begin
   EFI_FILE_PROTOCOL* kernel_file;
   root_dir->Open(
-    root_dir, &kernel_file, L"kernel.elf", EFI_FILE_MODE_READ, 0
+    root_dir, &kernel_file, L"\\kernel.elf", EFI_FILE_MODE_READ, 0
   );
 
   UINTN file_info_size = sizeof(EFI_FILE_INFO) + sizeof(CHAR16) * 12;
