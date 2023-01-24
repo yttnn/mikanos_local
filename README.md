@@ -39,3 +39,14 @@
 #### day04b
 - `frame_buffer_config.hpp`のシンボリックリンクをはる
 - 投機実行...授業でやった
+#### day04d
+- 難しい
+- `phdr`: program header
+  - メモリ読み込み関係の情報（セグメント？）が入っている
+  - 配列として存在
+- `shdr`: section header
+- `ehdr`: elf file header
+  - p111図4.5の一番上にあるし、versionとかも入ってるし、ここを起点にする？
+  - ファイルヘッダは全体の情報があると書籍に書いてあった
+- `PT_***`: program (header) type ?
+- まとめたら意外とわかった
