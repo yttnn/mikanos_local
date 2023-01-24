@@ -35,3 +35,7 @@
 - `Halt`関数を実装
 - [ここ](https://uefi.org/specs/UEFI/2.10/13_Protocols_Media_Access.html#simple-file-system-protocol)に定義が書いてある
   - ながめてみるといいかも
+### day04
+#### day04b
+- `frame_buffer_config.hpp`のシンボリックリンクをはる
+- 投機実行...授業でやった
