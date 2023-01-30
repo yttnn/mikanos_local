@@ -1,4 +1,4 @@
-EDK2_DIR=$(HOME)/edk2
+EDK2_DIR = $(HOME)/edk2
 
 .PHONY: loader
 loader: Main.c

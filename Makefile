@@ -1,7 +1,7 @@
-EDK2_DIR=${HOME}/edk2
-OSBOOK_DIR=${HOME}/osbook
-LOADER=${EDK2_DIR}/Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi
-KERNEL=kernel/kernel.elf
+EDK2_DIR = ${HOME}/edk2
+OSBOOK_DIR = ${HOME}/osbook
+LOADER = ${EDK2_DIR}/Build/MikanLoaderX64/DEBUG_CLANG38/X64/Loader.efi
+KERNEL = kernel/kernel.elf
 
 .PHONY: qemu
 qemu: loader kernel
