@@ -50,3 +50,9 @@
   - ファイルヘッダは全体の情報があると書籍に書いてあった
 - `PT_***`: program (header) type ?
 - まとめたら意外とわかった
+### day05
+#### day05d
+- `~/osbook/devenv/x86_64-elf/include`へのパスを通してインテリセンスを有効にする
+  - `/x86_64-elf/include/**`の書き方だとうまくいかず、`/x86_64-elf/include/`だといけた。なぜ
+- Makefileがよめないから調べる
+- `newlib_support.c`のsbrkはメモリ配置系らしい

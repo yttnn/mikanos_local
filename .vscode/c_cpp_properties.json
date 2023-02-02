@@ -3,7 +3,8 @@
         {
           "name": "mikanos",
           "includePath": [
-              "${HOME}/edk2/MdePkg/Include/**"
+              "${HOME}/edk2/MdePkg/Include/**",
+              "${HOME}/osbook/devenv/x86_64-elf/include/"
           ],
           "intelliSenseMode": "linux-clang-x64",
           "compilerPath": "/usr/bin/clang",
