@@ -56,3 +56,5 @@
   - `/x86_64-elf/include/**`の書き方だとうまくいかず、`/x86_64-elf/include/`だといけた。なぜ
 - Makefileがよめないから調べる
 - `newlib_support.c`のsbrkはメモリ配置系らしい
+#### day05e
+- `newlib_support.c`に加筆がある。よくわからない。
