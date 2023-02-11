@@ -1,15 +1,16 @@
 {
     "configurations": [
         {
-          "name": "mikanos",
-          "includePath": [
-              "${HOME}/edk2/MdePkg/Include/**",
-              "${HOME}/osbook/devenv/x86_64-elf/include/"
-          ],
-          "intelliSenseMode": "linux-clang-x64",
-          "compilerPath": "/usr/bin/clang",
-          "cStandard": "c17",
-          "cppStandard": "c++14"
+            "name": "mikanos",
+            "includePath": [
+                "${HOME}/edk2/MdePkg/Include/**",
+                "${HOME}/osbook/devenv/x86_64-elf/include/",
+                "${workspaceFolder}/kernel/"
+            ],
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++14"
         }
     ],
     "version": 4
