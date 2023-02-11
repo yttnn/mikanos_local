@@ -58,3 +58,19 @@
 - `newlib_support.c`のsbrkはメモリ配置系らしい
 #### day05e
 - `newlib_support.c`に加筆がある。よくわからない。
+### day06
+#### day06b
+- 難しかった。また戻ってきてやる。
+- 4章で定義した配置new `void* operator new(size_t size, void* buf)`が消えてた。なぜ？
+#### day06c
+- 配置new `void operator delete(void* obj)`が消えてた
+- class code
+  - ベースクラス0x0cはシリアル通信、サブクラス0x03はUSB、インターフェイス0x30はUSB3.0をそれぞれ表す
+  - これを`main.cpp`で探す（リスト6.18）
+- usb dir
+  - kernel/usbディレクトリをコピー
+  - 中身を見てみたけど、ぜんぜんわからなかった
+  - https://uchan.hateblo.jp/entry/2020/12/01/071904
+- マウスが動かない
+  - LogLevelをDebugにすると、`xhc.Run()`で止まっていることが分かった（そもそもこの関数から帰ってきなさそう）
+  - `register.hpp`の`MemMapRegister.Write`内のfor文の終了条件を下記間違えて、無限ループで止まっていた
