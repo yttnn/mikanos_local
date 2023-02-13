@@ -73,4 +73,21 @@
   - https://uchan.hateblo.jp/entry/2020/12/01/071904
 - マウスが動かない
   - LogLevelをDebugにすると、`xhc.Run()`で止まっていることが分かった（そもそもこの関数から帰ってきなさそう）
-  - `register.hpp`の`MemMapRegister.Write`内のfor文の終了条件を下記間違えて、無限ループで止まっていた
+  - `register.hpp`の`MemMapRegister.Write`内のfor文の終了条件を書き間違えて、無限ループで止まっていた
+### day07
+#### day07a
+- `kernel/usb/xhci/xhci.cpp`に修正がある
+- 割り込みの流れをまとめる
+  - 事前準備
+    - 割り込みハンドラ`IntHandlerXHCI`を準備
+    - それを識別子テーブルに登録（`LoadIDT`, `lidt`命令)、`pci::ConfigureMSIFixedDestination`でMSI有効化
+  - イベント発生時
+    - CPUがイベント検知
+    - 今の処理をとめ、割り込みハンドラに処理を移す
+    - 終わり次第、レジスタの状態とかを戻しつつ、処理を再開(`NotifyEndOfInterrupt`)
+      - `__attribute__`をつけると、イイ感じにコンパイラが前後処理を入れてくれる
+- MSIのCapabilityとは？
+  - PCI Configuration SpaceにCapability Pointerがある（0x34）
+  - 上のポインタが指しているであろうMSI Capability Registerの定義は`pci::MSICapability`で、[これ](https://www.intel.com/content/www/us/en/docs/programmable/683686/20-4/msi-registers.html)
+  - `pci::CapabilityHeader`はおそらく`pci::MSICapability`の上4byteで、制御用？
+  - MSI有効化の処理でmessage addressとmessage dataを登録しておくと、割り込み時にうまいことやってくれてそう
