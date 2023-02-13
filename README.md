@@ -91,3 +91,7 @@
   - 上のポインタが指しているであろうMSI Capability Registerの定義は`pci::MSICapability`で、[これ](https://www.intel.com/content/www/us/en/docs/programmable/683686/20-4/msi-registers.html)
   - `pci::CapabilityHeader`はおそらく`pci::MSICapability`の上4byteで、制御用？
   - MSI有効化の処理でmessage addressとmessage dataを登録しておくと、割り込み時にうまいことやってくれてそう
+#### day07b
+- 割り込みハンドラ内にあった処理をメインループ(?)に移している
+- 割り込みハンドラの仕事がqueueへのpushだけになったため、忙しくなくなる
+- cli: clear interrupt flag, sli: set interrupt flag
