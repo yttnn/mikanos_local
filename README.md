@@ -95,3 +95,11 @@
 - 割り込みハンドラ内にあった処理をメインループ(?)に移している
 - 割り込みハンドラの仕事がqueueへのpushだけになったため、忙しくなくなる
 - cli: clear interrupt flag, sli: set interrupt flag
+### day8
+#### day8b
+- 用語集
+  - GDT: Global Data Table
+  - DS: Data Segment (?)
+  - SS: Stack Segment (register)
+  - CS: Code Segment (register)
+- CSSSの動作がイマイチよくわからなかった
