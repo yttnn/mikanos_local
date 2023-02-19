@@ -2,4 +2,4 @@ include ../Makefile
 
 .PHONY: print-objs
 print-objs:
-  @echo $(OBJS)
+	@echo $(OBJS)
