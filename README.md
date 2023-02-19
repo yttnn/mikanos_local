@@ -103,3 +103,8 @@
   - SS: Stack Segment (register)
   - CS: Code Segment (register)
 - CSSSの動作がイマイチよくわからなかった
+#### day08c
+- 起動時
+  - メモリマップをなめながら、使用済みのフレームを`MarkAllocated`で記録していく
+  - `SetMemoryRange`で物理メモリを超えないように設定
+- `alloc_map_`について
