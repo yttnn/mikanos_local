@@ -56,6 +56,7 @@
   - `/x86_64-elf/include/**`の書き方だとうまくいかず、`/x86_64-elf/include/`だといけた。なぜ
 - Makefileがよめないから調べる
 - `newlib_support.c`のsbrkはメモリ配置系らしい
+  - 重ね合わせで使う
 #### day05e
 - `newlib_support.c`に加筆がある。よくわからない。
 ### day06
@@ -108,3 +109,7 @@
   - メモリマップをなめながら、使用済みのフレームを`MarkAllocated`で記録していく
   - `SetMemoryRange`で物理メモリを超えないように設定
 - `alloc_map_`について
+- テストについて
+  - `/test/usb/xhci`を作らないとコンパイルが通らなかった
+  - `error: no matching function for call to '__iterator_category'`で止まる
+  - 原因はよくわかってない
