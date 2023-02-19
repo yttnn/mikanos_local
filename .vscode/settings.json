@@ -1,4 +1,15 @@
 {
-  "C_Cpp.errorSquiggles": "enabled"
-  
+  "C_Cpp.errorSquiggles": "enabled",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/*.d": true,
+    "**/*.o": true,
+    "kernel/kernel.elf": true,
+    "kernel/hankaku.bin": true
+  }
 }
