@@ -113,3 +113,13 @@
   - `/test/usb/xhci`を作らないとコンパイルが通らなかった
   - `error: no matching function for call to '__iterator_category'`で止まる
   - 原因はよくわかってない
+### day09
+#### day09a
+- sbrkを実装して、`new`が使えるようになる
+- `Window`クラスを実装
+  - マウスも`main`での定義からwindowでの実装に変わる
+  - window自体は動かず、layerにより制御される
+- `Layer`クラスなどを実装
+  - windowを制御する
+  - moveが定義されている
+  - 各レイヤは`LayerManager`で制御される
