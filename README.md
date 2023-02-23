@@ -123,3 +123,9 @@
   - windowを制御する
   - moveが定義されている
   - 各レイヤは`LayerManager`で制御される
+#### day09c
+- `((bits_per_pixel + 7)/8)`は1ピクセルのバイト数
+- 画面描画の処理順が、PixelWriter->フレームバッファだったのが、シャドウバッファ->フレームバッファに変わった
+  - それに合わせて、PixelWriterでの画面処理を書き換える
+- 画面描画の流れ
+  - `LayerManager::Draw`->`Layer::DrawTo`->`Window::DrawTo`->`FrameBuffer::Copy`
