@@ -129,3 +129,5 @@
   - それに合わせて、PixelWriterでの画面処理を書き換える
 - 画面描画の流れ
   - `LayerManager::Draw`->`Layer::DrawTo`->`Window::DrawTo`->`FrameBuffer::Copy`
+#### day09e
+- `KernelMainNewStack`の最初の方に出てくる`DrawDesktop`いらなくね？
