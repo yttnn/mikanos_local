@@ -131,3 +131,6 @@
   - `LayerManager::Draw`->`Layer::DrawTo`->`Window::DrawTo`->`FrameBuffer::Copy`
 #### day09e
 - `KernelMainNewStack`の最初の方に出てくる`DrawDesktop`いらなくね？
+### day10
+#### day10a
+- マウスカーソルを限界まで右や下にもってくと、画面の外にでることに初めて気がついた。
