@@ -137,3 +137,6 @@
 ### day11
 #### day11b
 - `lvt_time = (0b010 << 16) | InterruptVector::kLAPICTimer;` なにこれ...??
+#### day11e
+- [`EFI_CONFIGURATION_TABLE`](https://dox.ipxe.org/structEFI__CONFIGURATION__TABLE.html)
+- [`EFI_SYSTEM_TABLE`](https://dox.ipxe.org/structEFI__SYSTEM__TABLE.html)
