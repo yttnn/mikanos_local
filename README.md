@@ -143,3 +143,7 @@
 ### day12
 #### day12b
 - タイマの論理はよくわかってないが、まぁ動いてるからヨシ
+#### day12c
+- 無事にキー入力できた！すげー
+- https://www.usb.org/sites/default/files/hut1_2.pdf
+  - このページにGame Controllerがあったから、Gamepadのドライバとかもかけるのかな？
