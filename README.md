@@ -140,3 +140,6 @@
 #### day11e
 - [`EFI_CONFIGURATION_TABLE`](https://dox.ipxe.org/structEFI__CONFIGURATION__TABLE.html)
 - [`EFI_SYSTEM_TABLE`](https://dox.ipxe.org/structEFI__SYSTEM__TABLE.html)
+### day12
+#### day12b
+- タイマの論理はよくわかってないが、まぁ動いてるからヨシ

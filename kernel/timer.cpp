@@ -1,6 +1,7 @@
 #include "timer.hpp"
 
 #include "interrupt.hpp"
+#include "acpi.hpp"
 
 namespace {
   const uint32_t kCountMax = 0xffffffffu;
@@ -13,8 +14,16 @@ namespace {
 void InitializeLAPICTimer(std::deque<Message>& msg_queue) {
   timer_manager = new TimerManager{msg_queue};
   divide_config = 0b1011;
+  lvt_timer = 0b011 << 16;
+  StartLAPICTimer();
+  acpi::WaitMillseconds(100);
+  const auto elapsed = LAPICTimerElapsed();
+  StopLAPICTimer();
+  lapic_timer_freq = static_cast<unsigned long>(elapsed) * 10;
+
+  divide_config = 0b1011;
   lvt_timer = (0b010 << 16) | InterruptVector::kLAPICTimer;
-  initial_count = 1000000u;
+  initial_count = lapic_timer_freq / kTimerFreq;
 }
 
 void StartLAPICTimer() {
@@ -57,6 +66,7 @@ void TimerManager::Tick() {
 }
 
 TimerManager* timer_manager;
+unsigned long lapic_timer_freq;
 
 void LAPICTimerOnInterrupt() {
   timer_manager->Tick();
