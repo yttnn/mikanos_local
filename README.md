@@ -147,3 +147,6 @@
 - 無事にキー入力できた！すげー
 - https://www.usb.org/sites/default/files/hut1_2.pdf
   - このページにGame Controllerがあったから、Gamepadのドライバとかもかけるのかな？
+#### day12d
+- [本の参考文献13](https://www.usb.org/sites/default/files/hut1_2.pdf)のキー配列なんか違くね...
+  - ちゃんと調査したら参考文献のはUS配列だった。
