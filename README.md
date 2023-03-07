@@ -164,3 +164,10 @@
 - 現状、3タスクが動いている。
   - メインタスク
     - イベント処理（画面描画、割り込みなど）
+### day15
+#### day15b
+- __TaskBWindowが消える__
+  - https://github.com/uchan-nos/os-from-zero/issues/42
+  - ここで報告されている
+  - mainでマウス初期化前にTaskBをアクティブにしているのが原因
+  - `active_layer->Activate`をマウス初期化の下に置く
