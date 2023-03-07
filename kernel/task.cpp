@@ -165,7 +165,7 @@ Error TaskManager::Wakeup(uint64_t id, int level) {
   }
 
   Wakeup(it->get(), level);
-  return MAKE_ERROR(Error::kNoSuchTask);
+  return MAKE_ERROR(Error::kSuccess);
 }
 
 Error TaskManager::SendMessage(uint64_t id, const Message& msg) {
