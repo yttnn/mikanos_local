@@ -170,7 +170,6 @@ extern "C" void KernelMainNewStack(const FrameBufferConfig& frame_buffer_config_
   InitializeTextWindow();
   InitializeTaskBWindow();
   layer_manager->Draw({{0, 0}, ScreenSize()});
-  active_layer->Activate(task_b_window_layer_id);
 
   acpi::Initialize(acpi_table);
 
@@ -189,6 +188,7 @@ extern "C" void KernelMainNewStack(const FrameBufferConfig& frame_buffer_config_
   usb::xhci::Initialize();
   InitializeKeyboard();
   InitializeMouse();
+  active_layer->Activate(task_b_window_layer_id);
 
   char str[128];
 
