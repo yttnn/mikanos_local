@@ -30,6 +30,7 @@ class Terminal {
     void Scroll1();
     void ExecuteLine();
     void Print(const char* s);
+    void Print(char c);
     std::deque<std::array<char, kLineMax>> cmd_history_{};
     int cmd_history_index_{-1};
     Rectangle<int> HistroyUpDown(int direction);
