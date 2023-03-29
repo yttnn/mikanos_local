@@ -5,6 +5,7 @@
 #include "window.hpp"
 #include "task.hpp"
 #include "layer.hpp"
+#include "fat.hpp"
 
 class Terminal {
   public:
@@ -28,6 +29,7 @@ class Terminal {
     int linebuf_index_{0};
     std::array<char, kLineMax> linebuf_{};
     void Scroll1();
+    void ExecuteFile(const fat::DirectoryEntry& file_entry);
     void ExecuteLine();
     void Print(const char* s);
     void Print(char c);
