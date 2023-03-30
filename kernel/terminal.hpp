@@ -29,7 +29,7 @@ class Terminal {
     int linebuf_index_{0};
     std::array<char, kLineMax> linebuf_{};
     void Scroll1();
-    void ExecuteFile(const fat::DirectoryEntry& file_entry);
+    void ExecuteFile(const fat::DirectoryEntry& file_entr, char* command, char* first_arg);
     void ExecuteLine();
     void Print(const char* s);
     void Print(char c);
