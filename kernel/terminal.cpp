@@ -27,7 +27,7 @@ std::vector<char*> MakeArgVector(char* command, char* first_arg) {
     }
     argv.push_back(p);
 
-    while (p[0] != 0 && isspace(p[0])) {
+    while (p[0] != 0 && !isspace(p[0])) {
       ++p;
     }
     if (p[0] == 0) {
@@ -345,7 +345,7 @@ void Terminal::ExecuteLine() {
       Print(command);
       Print("\n");
     } else if (auto err = ExecuteFile(*file_entry, command, first_arg)) {
-      Print("faild to exec file: ");
+      Print("failed to exec file: ");
       Print(err.Name());
       Print("\n");
     }
@@ -444,7 +444,7 @@ Rectangle<int> Terminal::HistroyUpDown(int direction) {
 void TaskTerminal(uint64_t task_id, int64_t data) {
   __asm__("cli");
   Task& task = task_manager->CurrentTask();
-  Terminal* terminal = new Terminal();
+  Terminal* terminal = new Terminal;
   layer_manager->Move(terminal->LayerID(), {100, 200});
   active_layer->Activate(terminal->LayerID());
   layer_task_map->insert(std::make_pair(terminal->LayerID(), task_id));

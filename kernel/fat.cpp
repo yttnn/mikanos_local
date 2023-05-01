@@ -66,8 +66,7 @@ DirectoryEntry* FindFile(const char* name, unsigned long directory_cluster) {
 bool NameIsEqual(const DirectoryEntry& entry, const char* name) {
   unsigned char name83[11];
   memset(name83, 0x20, sizeof(name83));
-  bool b;
-  b = 1;
+
   int i = 0;
   int i83 = 0;
   for (; name[i] != 0 && i83 < sizeof(name83); ++i, ++i83) {

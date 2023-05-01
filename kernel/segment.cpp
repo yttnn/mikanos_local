@@ -23,7 +23,7 @@ void SetCodeSegment(SegmentDescriptor& desc, DescriptorType type, unsigned int d
   desc.bits.long_mode = 1;
   desc.bits.default_operation_size = 0;
   desc.bits.granularity = 1;
-};
+}
 
 void SetDataSegment(SegmentDescriptor& desc, DescriptorType type, unsigned int descriptor_privilege_level, uint32_t base, uint32_t limit) {
   SetCodeSegment(desc, type, descriptor_privilege_level, base, limit);
