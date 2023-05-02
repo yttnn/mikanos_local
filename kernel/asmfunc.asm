@@ -170,12 +170,12 @@ SwitchContext:  ; void SwitchContext(void* next_ctx, void* current_ctx);
 
   o64 iret
 
-  global CallApp
-  CallApp:
-    push rbp
-    mov rbp, rsp
-    push rcx
-    push r9
-    push rdx
-    push r8
-    o64 retf
+global CallApp
+CallApp:
+  push rbp
+  mov rbp, rsp
+  push rcx
+  push r9
+  push rdx
+  push r8
+  o64 retf
