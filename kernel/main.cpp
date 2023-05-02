@@ -30,6 +30,7 @@
 #include "task.hpp"
 #include "terminal.hpp"
 #include "fat.hpp"
+#include "syscall.hpp"
 
 
 
@@ -135,6 +136,7 @@ extern "C" void KernelMainNewStack(const FrameBufferConfig& frame_buffer_config_
   timer_manager->AddTimer(Timer{kTimer05sec, kTextboxCursorTimer});
   bool textbox_cursor_visible = false;
 
+  InitializeSyscall();
 
   InitializeTask();
   Task& main_task = task_manager->CurrentTask();
